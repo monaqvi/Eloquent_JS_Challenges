@@ -1,0 +1,15 @@
+var currentText = "#"
+var board = ""
+for (var length = 0; length < 8; length++){
+  board = ""
+  if (length % 2 == 0) currentText = "#"
+  else currentText = " "
+  var width = 0
+  while (width < 8){    
+    if (currentText == " ") currentText = "#"
+    else currentText = " "
+    board += currentText
+    width++
+  }  
+  console.log( board + "\n" )
+}
