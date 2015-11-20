@@ -1,0 +1,16 @@
+function countChar(textIn, letterSearching){
+  var totalCount = 0
+  for (var currentIndex = 0; currentIndex < textIn.length; currentIndex++){
+    if (textIn.charAt(currentIndex) == letterSearching) totalCount++;
+  }
+  return totalCount
+}
+
+function countBs(textIn){
+	return countChar(textIn, "B")
+}
+
+console.log(countBs("BBC"));
+// → 2
+console.log(countChar("kakkerlak", "k"));
+// → 4
