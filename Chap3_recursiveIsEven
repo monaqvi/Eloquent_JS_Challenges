@@ -1,0 +1,15 @@
+var isEven = function(value){
+  if (value < 0) value *= -1;
+  if (value == 0) return true;
+  else if (value == 1) return false;
+  else{
+  return isEven(value - 2)
+  }
+}
+
+console.log(isEven(50));
+// → true
+console.log(isEven(75));
+// → false
+console.log(isEven(-1));
+// → false
