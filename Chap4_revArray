@@ -1,0 +1,25 @@
+function reverseArray(myArray){
+  var NewArray = [];
+  for (var i = 0; i < myArray.length; i++){
+   NewArray.unshift(myArray[i]);
+ }
+  return NewArray;
+}
+
+function reverseArrayInPlace(myArray){
+  var length = myArray.length;
+  for (var i = 0; i < Math.floor(length / 2); i++){
+   var temp = myArray[length - 1 - i];
+   myArray[length - 1 - i] = myArray[i];
+   myArray[i] = temp;
+ }
+  return myArray;
+}
+
+
+console.log(reverseArray(["A", "B", "C"]));
+// → ["C", "B", "A"];
+var arrayValue = [1, 2, 3, 4, 5];
+reverseArrayInPlace(arrayValue);
+console.log(arrayValue);
+// → [5, 4, 3, 2, 1]
