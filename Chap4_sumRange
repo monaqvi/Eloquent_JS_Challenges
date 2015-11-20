@@ -1,0 +1,35 @@
+function range(start, end,step){
+  if(step == undefined) step = 1;  
+  if (start <= end) return arrayLoopUp(start, end, step);
+  if (start > end) return arrayLoopDown(start, end, step);
+ }
+
+function arrayLoopUp(start, end, step){
+  var myArray = []
+  for (var i = start; i <= end; i += step){
+     myArray.push(i);
+   }
+  return myArray;
+}
+
+function arrayLoopDown(start, end, step){
+  var myArray = []
+  for (var i = start; i >= end; i += step){
+     myArray.push(i);
+   }
+  return myArray;
+}
+
+function sum(input){
+  var total = 0 
+  for (var i = 0; i < input.length; i++){
+     total += input[i];
+   }
+  return total;
+}
+
+
+console.log(sum(range(1, 10)));
+// → 55
+console.log(range(5, 2, -1));
+// → [5, 4, 3, 2]
