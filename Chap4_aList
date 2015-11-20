@@ -1,0 +1,38 @@
+function arrayToList(array){
+  var runningList = prepend(array[array.length - 1], null);
+  
+  // initialized loop from 2nd last array element to avoid using an "if" for each element when it's only needed for the last
+  for (var i = array.length - 1 - 1; i >= 0; i --){
+	runningList = prepend(array[i], runningList);
+  }
+  return runningList;
+};
+
+function listToArray(list){
+  var myArray = []
+  for (var current = list; current != null; current = current.rest){
+   myArray.push(current.value); 
+  }
+  return myArray;
+};
+
+function prepend(value, list){
+  return newList = {
+    value : value,
+    rest: list,
+  };
+}
+
+function nth(list, index){
+  if (index == 0) return list.value;
+  else return nth(list.rest,index - 1);
+}
+
+console.log(arrayToList([10, 20]));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(listToArray(arrayToList([10,20,30])));
+// → [10, 20, 30]
+console.log(prepend(10, prepend(20, null)));
+// → {value: 10, rest: {value: 20, rest: null}}
+console.log(nth(arrayToList([10, 20, 30]), 1));
+// → 20
