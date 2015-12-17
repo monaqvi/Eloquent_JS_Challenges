@@ -1,0 +1,23 @@
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+var centuries = {};
+ancestry.forEach(function(person){
+  if (centuries[Math.ceil(person.died / 100)] == null) centuries[Math.ceil(person.died / 100)] = [];
+  centuries[Math.ceil(person.died / 100)].push(person.died - person.born); 
+});
+
+for (century in centuries){
+  centuries[century] = Math.round(10 * average(centuries[century])) / 10;
+};
+
+console.log(centuries);
+
+// → 16: 43.5
+//   17: 51.2
+//   18: 52.8
+//   19: 54.8
+//   20: 84.7
+//   21: 94
