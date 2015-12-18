@@ -1,3 +1,4 @@
+// My original methodology was very different in terms of the order of steps it took to solve this
 function average(array) {
   function plus(a, b) { return a + b; }
   return array.reduce(plus) / array.length;
@@ -14,6 +15,41 @@ for (century in centuries){
 };
 
 console.log(centuries);
+
+// → 16: 43.5
+//   17: 51.2
+//   18: 52.8
+//   19: 54.8
+//   20: 84.7
+//   21: 94
+
+
+//Redone to get extra credit
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+function groupBy(array,fn){
+  var groups = {}, groupName = "";
+  array.forEach(function(element){
+  	groupName = fn(element);
+    if (groups[groupName] == null) groups[groupName] = [];
+    groups[groupName].push(element);
+  }); 
+  return groups;
+}
+
+var centuries = groupBy(ancestry, function(person){
+	return Math.ceil(person.died / 100);
+});
+
+for (century in centuries){
+  var ages = centuries[century].map(function(person){
+  	return person.died - person.born;
+  });
+  console.log(century,":",Math.round(10* average(ages))/10);
+};
 
 // → 16: 43.5
 //   17: 51.2
